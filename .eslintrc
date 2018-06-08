@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "env": {
+    "node": true,
+    "browser": true
+  },
   "rules": {
     "arrow-body-style": [0],
     "consistent-return": [0],
