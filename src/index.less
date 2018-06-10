@@ -7,15 +7,194 @@ html, body, :global(#root) {
   height: 100%;
 }
 
-a,
-a:hover,
-a:visited,
-a:active {
+a {
   text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:visited,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 :global {
-  .mg-30 {
-    margin: 30px;
+  .filter-box {
+    padding: 0 0 24px 0 !important;
+    border-bottom: 1px solid #ccc;
+    .ant-form-item-label {
+      text-align: left;
+    }
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+    .ant-form-item-children {
+      display: block;
+      & > div {
+        width: 100%;
+      }
+    }
+  }
+  .white-bg {
+    background-color: #fff;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .block {
+    display: block;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .color-high {
+    color: #01aa78;
+  }
+
+  .color-low {
+    color: #ff5f73;
+  }
+
+  .color-white {
+    color: #fff;
+  }
+
+  .color-gray {
+    color: rgba(0, 0, 0, .4);
+  }
+
+  .color-red {
+    color: red;
+  }
+
+  .color-green {
+    color: green;
+  }
+
+  .color-yellow {
+    color: yellow;
+  }
+
+  .color-orange {
+    color: orange;
+  }
+
+  .page-wrapper {
+    background-color: #fff;
+    padding: 16px 24px;
+  }
+
+  .font-weight {
+    font-weight: bold;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .loopingClass (@index) when (@index > 0) {
+    @indexDouble: (@index * 2);
+
+    .mr-@{indexDouble} {
+      margin-right: (@indexDouble) * 1px;
+    }
+
+    .ml-@{indexDouble} {
+      margin-left: (@indexDouble) * 1px;
+    }
+
+    .mt-@{indexDouble} {
+      margin-top: (@indexDouble) * 1px;
+    }
+
+    .mb-@{indexDouble} {
+      margin-bottom: (@indexDouble) * 1px;
+    }
+
+    .mg-@{indexDouble} {
+      margin: (@indexDouble) * 1px;
+    }
+
+    .pr-@{indexDouble} {
+      padding-right: (@indexDouble) * 1px;
+    }
+
+    .pl-@{indexDouble} {
+      padding-left: (@indexDouble) * 1px;
+    }
+
+    .pt-@{indexDouble} {
+      padding-top: (@indexDouble) * 1px;
+    }
+
+    .pb-@{indexDouble} {
+      padding-bottom: (@indexDouble) * 1px;
+    }
+
+    .pd-@{indexDouble} {
+      padding: (@indexDouble) * 1px;
+    }
+
+    .font-size-@{indexDouble} {
+      font-size: (@indexDouble) * 1px;
+    }
+
+    .loopingClass(@index - 1);
+
+    .horizontal-center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vertical-center {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .loopingClass (30);
+
+  /* 居中对话框 */
+  .vertical-center-modal {
+    text-align: center;
+  }
+
+  .vertical-center-modal:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 0;
+  }
+
+  .vertical-center-modal .ant-modal {
+    display: inline-block;
+    vertical-align: middle;
+    top: 0;
+    text-align: left;
   }
 }

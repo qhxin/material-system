@@ -2,28 +2,28 @@
 
 'use strict';
 
-var AnotherYou = function () {};
+var Material = function () {};
 
-AnotherYou.prototype = {
-    init: function () {},
-    set: function (key, value) {
-        var defaultData = JSON.parse(LocalContractStorage.get(key));
-        var data = Object.prototype.toString.call(defaultData) == '[object Array]' ? defaultData : [];
-        data.push({
-            key: key,
-            value: value
-        });
-        if (data.length > 1) {
-            LocalContractStorage.del(key);
-        };
-        LocalContractStorage.set(key, JSON.stringify(data));
-    },
-    get: function (key) {
-        key = key.trim();
-        if ( key === "" ) {
-            throw new Error("empty key")
-        }
-        return LocalContractStorage.get(key);
-    }
+Material.prototype = {
+  init: function () {},
+  add: function (key, lists) {
+    var userAddress = Blockchain.transaction.from;
+    var defaultData = JSON.parse(LocalContractStorage.get(userAddress));
+    var saveMap = Object.prototype.toString.call(defaultData) == '[object Object]' ? defaultData : {};
+    saveMap[key] = lists;
+    LocalContractStorage.set(userAddress, JSON.stringify(saveMap));
+  },
+  del: function (key) {
+    var userAddress = Blockchain.transaction.from;
+    var defaultData = JSON.parse(LocalContractStorage.get(userAddress));
+    var saveMap = Object.prototype.toString.call(defaultData) == '[object Object]' ? defaultData : {};
+    delete saveMap[key];
+    LocalContractStorage.set(userAddress, JSON.stringify(saveMap));
+  },
+  get: function () {
+    var userAddress = Blockchain.transaction.from;
+    return LocalContractStorage.get(userAddress);
+  }
 };
-module.exports = AnotherYou;
+
+module.exports = Material;
