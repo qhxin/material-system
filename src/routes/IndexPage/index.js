@@ -60,7 +60,7 @@ export default class IndexPage extends React.Component {
   handleAdd = () => {
     const { dispatch, map } = this.props;
     const { addForm: { key, num } } = this.state;
-    if (map[key]) {
+    if (map && map[key]) {
       message.error('已存在此物料记录');
       return;
     }
@@ -202,6 +202,9 @@ export default class IndexPage extends React.Component {
           </Row>
           <div className="mt-20">
             退出只需关闭网页即可，数据不会有痕迹
+          </div>
+          <div className="mt-10">
+            钱包应当有余额以支付区块链存储的GAS费用
           </div>
         </div>
       </div>
